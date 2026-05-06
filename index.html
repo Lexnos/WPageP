@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <title>Insurance Central Point</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0b2343',
+            slategray: '#64748b'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <!-- Page Wrapper -->
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Header / Nav -->
+    <header class="bg-navy text-white">
+      <div class="max-w-auto xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <div class="h-9 w-9 rounded-full border border-white/20 bg-white/5">
+            <img
+              src="images/ICPLogo.png"
+              alt="Insurance Central Point logo"
+              class="h-full w-full object-fill"
+            />
+          </div>
+          <div>
+            <div class="text-lg font-semibold tracking-tight" data-i18n="brandName">Insurance Central Point</div>
+            <div class="text-xs text-slate-200/80" data-i18n="brandTagline">Protection you can trust</div>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <nav class="hidden md:flex items-center space-x-6 text-sm">
+            <a href="#hero" class="hover:text-slate-200" data-i18n="navHome">Home</a>
+            <a href="#services" class="hover:text-slate-200" data-i18n="navServices">Services</a>
+            <a href="#contact" class="hover:text-slate-200" data-i18n="navContact">Contact</a>
+            <a href="#quote" class="inline-flex items-center rounded-full border border-white/20 px-4 py-1.5 text-sm font-medium hover:bg-white hover:text-navy transition" data-i18n="navQuote">
+              Request a Quote
+            </a>
+          </nav>
+          <a
+            href="https://www.instagram.com/insurancecentralpoint?igsh=MXV6NHIxc3V2ZDR2NQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-white/30 p-2 hover:bg-white/10 transition"
+            aria-label="Visit our Instagram profile"
+          >
+            <img src="images/instagram-logo.svg" alt="" class="h-5 w-5 object-contain" width="20" height="20" />
+            <span class="sr-only" data-i18n="instagramCta">Instagram</span>
+          </a>
+          <div class="flex items-center gap-2" aria-label="Language selector">
+            <button type="button" class="lang-toggle rounded-full border border-white/30 p-1.5 hover:bg-white/10 transition" data-lang="en" aria-label="Switch to English">
+              <img src="https://flagcdn.com/w40/us.png" alt="English" class="h-5 w-5 rounded-full object-cover" />
+            </button>
+            <button type="button" class="lang-toggle rounded-full border border-white/30 p-1.5 hover:bg-white/10 transition" data-lang="es" aria-label="Cambiar a espanol">
+              <img src="https://flagcdn.com/w40/es.png" alt="Espanol" class="h-5 w-5 rounded-full object-cover" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-1">
+      <section id="hero" class="relative text-white overflow-hidden">
+        <!-- Place your image at images/hero-bg.jpg (or change the url below). -->
+        <div
+          class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url('images/hero-bg.jpg');"
+          aria-hidden="true"
+        ></div>
+        <div class="pointer-events-none absolute inset-0 bg-slate-900/60" aria-hidden="true"></div>
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left: Text -->
+          <div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight" data-i18n="heroTitle">
+              Simple, reliable coverage<br class="hidden sm:block" />
+              for what matters most.
+            </h1>
+            <p class="mt-5 text-sm sm:text-base text-slate-200 max-w-xl" data-i18n="heroDesc">
+              At Insurance Central Point Insurance, we help you protect your car, home, and family
+              with clear plans and honest guidance. No confusing terms. No pressure.
+              Just coverage you can feel good about.
+            </p>
+
+            <!-- Trust badges -->
+            <div class="mt-6 flex flex-wrap gap-4 text-xs sm:text-sm text-slate-200/90">
+              <div class="inline-flex items-center space-x-2 rounded-full bg-white/5 px-3 py-1 border border-white/10">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span data-i18n="badgeLicensed">Licensed &amp; certified agents</span>
+              </div>
+              <div class="inline-flex items-center space-x-2 rounded-full bg-white/5 px-3 py-1 border border-white/10">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span data-i18n="badgeYears">Serving families for over 20 years</span>
+              </div>
+            </div>
+
+            <!-- Call to action -->
+            <div id="quote" class="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0">
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-md bg-emerald-500 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-navy focus-visible:ring-emerald-400 transition"
+                data-i18n="ctaQuote"
+              >
+                Request a Quote
+              </a>
+              <p class="text-xs sm:text-sm text-slate-200" data-i18n="ctaCall">
+                Or call us directly at <span class="font-semibold">1 (786) 212‑0436</span>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Card -->
+          <div class="lg:pl-8">
+            <div class="bg-white/95 text-slate-900 rounded-2xl shadow-xl shadow-slate-900/30 border border-slate-200/80 p-6 sm:p-7 space-y-5">
+              <h2 class="text-lg font-semibold text-navy" data-i18n="whyTitle">Why Insurance Central Point?</h2>
+              <ul class="space-y-3 text-sm text-slate-700">
+                <li class="flex items-start space-x-3">
+                  <span class="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>
+                  <span data-i18n="why1">Clear, easy-to-read policies with no hidden fees.</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>
+                  <span data-i18n="why2">Fast claims support from a dedicated local team.</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <span class="mt-1 h-2 w-2 rounded-full bg-emerald-500"></span>
+                  <span data-i18n="why3">Flexible plans that fit your budget and your life.</span>
+                </li>
+              </ul>
+
+              <!-- Mini quote form (non-functional) -->
+              <div class="pt-3 border-t border-slate-200">
+                <p class="text-xs font-medium text-slategray uppercase tracking-wide mb-3" data-i18n="quickStart">
+                  Start in under 60 seconds
+                </p>
+                <form class="space-y-3">
+                  <div>
+                    <label class="block text-xs font-medium text-slate-700 mb-1" for="fullname" data-i18n="nameLabel">
+                      Full Name
+                    </label>
+                    <input
+                      id="fullname"
+                      type="text"
+                      placeholder="e.g. Alex Johnson"
+                      data-i18n-placeholder="namePlaceholder"
+                      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-700 mb-1" for="zip" data-i18n="phoneLabel">
+                      Phone Number
+                    </label>
+                    <input
+                      id="phonenumber"
+                      type="text"
+                      placeholder="e.g. 786-000-1234"
+                      data-i18n-placeholder="phonePlaceholder"
+                      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-700 mb-1" for="coverage" data-i18n="coverageLabel">
+                      Coverage Type
+                    </label>
+                    <select
+                      id="coverage"
+                      class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                    >
+                      <option data-i18n="optHealth">Health Insurance</option>
+                      <option data-i18n="optHome">Home Insurance</option>
+                      <option data-i18n="optLife">Life Insurance</option>
+                      <option data-i18n="optDental">Dental Insurance</option>
+                      <option data-i18n="optVision">Vision Insurance</option>
+                      <option data-i18n="optFinalExpense">Final Expense Insurance</option>
+                    </select>
+                  </div>
+                  <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center rounded-md bg-navy px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 focus:ring-offset-white transition"
+                    data-i18n="requestCallback"
+                  >
+                    Request a Call Back
+                  </button>
+                  <p class="text-[11px] text-slate-500" data-i18n="callbackNote">
+                    A licensed agent will call you to walk through your options. No obligation.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partner logos carousel -->
+      <section id="partners" class="bg-white border-b border-slate-100" aria-labelledby="partners-heading">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+          <h2 id="partners-heading" class="text-center text-xl sm:text-2xl font-semibold text-slate-900" data-i18n="partnersTitle">
+            Our Partners
+          </h2>
+          <div class="relative mt-8 md:mt-10">
+            <button
+              type="button"
+              data-partner-prev
+              data-i18n-aria="partnersPrev"
+              class="partner-nav absolute left-0 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:flex"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div
+              id="partner-scroller"
+              class="partner-scroller flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth py-2 px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x max-sm:[scroll-padding-inline:max(1rem,calc((100%-72%)/2))] sm:px-16"
+              tabindex="0"
+              role="region"
+              data-i18n-aria="partnersRegion"
+            >
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">AmeriHealth Caritas Next</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Medica</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Health First Health Plans</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of Texas</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of North Carolina</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of Illinois</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of Oklahoma</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Florida Blue</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Community Health Choice</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Cigna Healthcare</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Molina Healthcare</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">United Healthcare</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">CVS Health | Aetna</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Ambetter</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Select Health</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">CareSource</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Oscar</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Wellcare</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Optimum HealthCare, Inc</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Preferred Care Network</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">HealthSun Health Plans</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Solis Health Plans</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Preferred Care Partners</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Devoted</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Freedom Health Humana</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Care Plus Health Plans, Inc</div>
+              </div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
+                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Doctors Healthcare Plans, Inc</div>
+              </div>
+            </div>
+            <button
+              type="button"
+              data-partner-next
+              data-i18n-aria="partnersNext"
+              class="partner-nav absolute right-0 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-800 shadow-sm hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:flex"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="bg-white" aria-labelledby="services-heading">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+          <div class="max-w-2xl">
+            <h2 id="services-heading" class="text-2xl sm:text-3xl font-semibold text-navy tracking-tight" data-i18n="servicesTitle">
+              Our Services
+            </h2>
+            <p class="mt-3 text-sm sm:text-base text-slate-600" data-i18n="servicesDesc">
+              We offer simple, straightforward plans built to protect your everyday life.
+            </p>
+          </div>
+
+          <div class="relative mt-8 md:mt-10">
+            <button
+              type="button"
+              data-service-prev
+              data-i18n-aria="servicesPrev"
+              class="partner-nav absolute left-0 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-transparent text-slate-800 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:flex sm:border-slate-300/50 sm:bg-white/45 sm:backdrop-blur-md sm:hover:bg-white/70"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div
+              id="services-scroller"
+              class="services-scroller flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth py-2 px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x sm:px-14"
+              tabindex="0"
+              role="region"
+              data-i18n-aria="servicesRegion"
+            >
+              <!-- Auto -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="autoTitle">Auto Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="autoTag">Everyday driving</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="autoDesc">
+                  Protection for your car, truck, or SUV with coverage options that help you stay on the road
+                  and prepared for the unexpected.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="autoItem1">• Liability, collision, and comprehensive options</li>
+                  <li data-i18n="autoItem2">• Discounts for safe drivers and multi‑car families</li>
+                  <li data-i18n="autoItem3">• Fast claims support when you need it most</li>
+                </ul>
+              </div>
+
+              <!-- Home -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="homeTitle">Home Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="homeTag">Your space</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="homeDesc">
+                  Coverage for your house, condo, or apartment so you can feel confident your space is protected
+                  from life’s surprises.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="homeItem1">• Protection for your home and belongings</li>
+                  <li data-i18n="homeItem2">• Options for renters, owners, and landlords</li>
+                  <li data-i18n="homeItem3">• Support with storms, fire, theft, and more</li>
+                </ul>
+              </div>
+
+              <!-- Life -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="lifeTitle">Life Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="lifeTag">Your family</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="lifeDesc">
+                  Plans that help take care of the people you love, so you can plan for tomorrow with peace of mind today.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="lifeItem1">• Term and whole life options</li>
+                  <li data-i18n="lifeItem2">• Simple, guided application process</li>
+                  <li data-i18n="lifeItem3">• Flexible coverage amounts</li>
+                </ul>
+              </div>
+
+              <!-- Health -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="healthTitle">Health Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="healthTag">Your wellbeing</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="healthDesc">
+                  Medical plans that help cover doctor visits, prescriptions, and hospital care so you can focus on staying healthy.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="healthItem1">• Preventive care and essential health benefits</li>
+                  <li data-i18n="healthItem2">• In-network and PPO-style flexibility</li>
+                  <li data-i18n="healthItem3">• Guidance choosing a plan that fits your budget</li>
+                </ul>
+              </div>
+
+              <!-- Dental -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="dentalTitle">Dental Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="dentalTag">Your smile</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="dentalDesc">
+                  Coverage for cleanings, fillings, and major dental work with clear benefits you can understand.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="dentalItem1">• Routine exams, X-rays, and preventive care</li>
+                  <li data-i18n="dentalItem2">• Orthodontia options on select plans</li>
+                  <li data-i18n="dentalItem3">• Access to broad dentist networks</li>
+                </ul>
+              </div>
+
+              <!-- Vision -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="visionTitle">Vision Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="visionTag">Clear sight</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="visionDesc">
+                  Eye exams, lenses, and frames to keep routine vision care simple and affordable.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="visionItem1">• Annual exam benefits</li>
+                  <li data-i18n="visionItem2">• Allowances for glasses or contacts</li>
+                  <li data-i18n="visionItem3">• Savings at participating retailers and providers</li>
+                </ul>
+              </div>
+
+              <!-- Final expense -->
+              <div class="service-card flex w-full max-w-full shrink-0 snap-start snap-always flex-col rounded-xl border border-slate-200 bg-slate-50/80 p-5 [flex:0_0_100%] sm:w-auto sm:max-w-none sm:[flex:0_0_auto] sm:min-w-[calc((100%-1.5rem)/2)] lg:min-w-[calc((100%-3rem)/3)]">
+                <div class="mb-3 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <h3 class="text-base font-semibold text-navy" data-i18n="finalExpenseTitle">Final Expense Insurance</h3>
+                  <span class="text-[11px] font-medium uppercase tracking-wide text-slategray">
+                    <span data-i18n="finalExpenseTag">Peace of mind</span>
+                  </span>
+                </div>
+                <p class="flex-1 text-sm text-slate-700" data-i18n="finalExpenseDesc">
+                  Whole-life style coverage that helps loved ones handle funeral and final costs without added financial stress.
+                </p>
+                <ul class="mt-3 space-y-1.5 text-xs text-slate-600">
+                  <li data-i18n="finalExpenseItem1">• Simplified underwriting on many plans</li>
+                  <li data-i18n="finalExpenseItem2">• Fixed benefits paid to your beneficiaries</li>
+                  <li data-i18n="finalExpenseItem3">• No medical exam required on many policies</li>
+                </ul>
+              </div>
+            </div>
+            <button
+              type="button"
+              data-service-next
+              data-i18n-aria="servicesNext"
+              class="partner-nav absolute right-0 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-transparent text-slate-800 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:flex sm:border-slate-300/50 sm:bg-white/45 sm:backdrop-blur-md sm:hover:bg-white/70"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-900 text-slate-100">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <div class="text-base font-semibold tracking-tight" data-i18n="footerBrand">Insurance Central Point</div>
+            <p class="mt-1 text-sm text-slate-300 max-w-md" data-i18n="footerDesc">
+              Have questions about coverage? Our team is here to help you choose a plan that fits.
+            </p>
+          </div>
+          <div class="space-y-2 text-sm">
+            <p class="font-medium text-slate-100" data-i18n="footerCall">Call us</p>
+            <p class="text-slate-200">1 (786) 212‑0436</p>
+            <a
+              href="https://instagram.com/yourcompany"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full border border-slate-600 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-800 transition"
+            >
+              <img src="images/instagram-logo.svg" alt="" class="h-4 w-4 object-contain" width="16" height="16" />
+              <span data-i18n="footerInstagram">Follow us on Instagram</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-700 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-slate-400">
+          <div>
+            <p class="font-medium text-slate-200" data-i18n="footerOffice">Office</p>
+            <p>123 Harborview Lane, Suite 400</p>
+            <p>Bayview, ST 98765</p>
+          </div>
+          <p class="md:text-right" data-i18n="copyright">
+            © <span id="year"></span> Insurance Central Point. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const translations = {
+      en: {
+        pageLang: 'en',
+        brandName: 'Insurance Central Point',
+        brandTagline: 'Protection you can trust',
+        navHome: 'Home',
+        navServices: 'Services',
+        navContact: 'Contact',
+        navQuote: 'Request a Quote',
+        instagramCta: 'Instagram',
+        partnersTitle: 'Our Partners',
+        partnersPrev: 'Show previous partners',
+        partnersNext: 'Show more partners',
+        partnersRegion: 'Partner insurance carriers',
+        partnerLogoAlt: 'Insurance carrier partner logo',
+        servicesPrev: 'Show previous services',
+        servicesNext: 'Show more services',
+        servicesRegion: 'Insurance services we offer',
+        heroTitle: 'Simple, reliable coverage<br class="hidden sm:block" />for what matters most.',
+        heroDesc: 'At Insurance Central Point Insurance, we help you protect your car, home, and family with clear plans and honest guidance. No confusing terms. No pressure. Just coverage you can feel good about.',
+        badgeLicensed: 'Licensed & certified agents',
+        badgeYears: 'Serving families for over 20 years',
+        ctaQuote: 'Request a Quote',
+        ctaCall: 'Or call us directly at <span class="font-semibold">1 (786) 212‑0436</span>.',
+        whyTitle: 'Why Insurance Central Point?',
+        why1: 'Clear, easy-to-read policies with no hidden fees.',
+        why2: 'Fast claims support from a dedicated local team.',
+        why3: 'Flexible plans that fit your budget and your life.',
+        quickStart: 'Start in under 60 seconds',
+        nameLabel: 'Full Name',
+        namePlaceholder: 'e.g. Alex Johnson',
+        phoneLabel: 'Phone Number',
+        phonePlaceholder: 'e.g. 786-000-1234',
+        coverageLabel: 'Coverage Type',
+        optHealth: 'Health Insurance',
+        optHome: 'Home Insurance',
+        optLife: 'Life Insurance',
+        optDental: 'Dental Insurance',
+        optVision: 'Vision Insurance',
+        optFinalExpense: 'Final Expense Insurance',
+        requestCallback: 'Request a Call Back',
+        callbackNote: 'A licensed agent will call you to walk through your options. No obligation.',
+        servicesTitle: 'Our Services',
+        servicesDesc: 'We offer simple, straightforward plans built to protect your everyday life.',
+        autoTitle: 'Auto Insurance',
+        autoTag: 'Everyday driving',
+        autoDesc: 'Protection for your car, truck, or SUV with coverage options that help you stay on the road and prepared for the unexpected.',
+        autoItem1: '• Liability, collision, and comprehensive options',
+        autoItem2: '• Discounts for safe drivers and multi‑car families',
+        autoItem3: '• Fast claims support when you need it most',
+        homeTitle: 'Home Insurance',
+        homeTag: 'Your space',
+        homeDesc: 'Coverage for your house, condo, or apartment so you can feel confident your space is protected from life’s surprises.',
+        homeItem1: '• Protection for your home and belongings',
+        homeItem2: '• Options for renters, owners, and landlords',
+        homeItem3: '• Support with storms, fire, theft, and more',
+        lifeTitle: 'Life Insurance',
+        lifeTag: 'Your family',
+        lifeDesc: 'Plans that help take care of the people you love, so you can plan for tomorrow with peace of mind today.',
+        lifeItem1: '• Term and whole life options',
+        lifeItem2: '• Simple, guided application process',
+        lifeItem3: '• Flexible coverage amounts',
+        healthTitle: 'Health Insurance',
+        healthTag: 'Your wellbeing',
+        healthDesc: 'Medical plans that help cover doctor visits, prescriptions, and hospital care so you can focus on staying healthy.',
+        healthItem1: '• Preventive care and essential health benefits',
+        healthItem2: '• In-network and PPO-style flexibility',
+        healthItem3: '• Guidance choosing a plan that fits your budget',
+        dentalTitle: 'Dental Insurance',
+        dentalTag: 'Your smile',
+        dentalDesc: 'Coverage for cleanings, fillings, and major dental work with clear benefits you can understand.',
+        dentalItem1: '• Routine exams, X-rays, and preventive care',
+        dentalItem2: '• Orthodontia options on select plans',
+        dentalItem3: '• Access to broad dentist networks',
+        visionTitle: 'Vision Insurance',
+        visionTag: 'Clear sight',
+        visionDesc: 'Eye exams, lenses, and frames to keep routine vision care simple and affordable.',
+        visionItem1: '• Annual exam benefits',
+        visionItem2: '• Allowances for glasses or contacts',
+        visionItem3: '• Savings at participating retailers and providers',
+        finalExpenseTitle: 'Final Expense Insurance',
+        finalExpenseTag: 'Peace of mind',
+        finalExpenseDesc: 'Whole-life style coverage that helps loved ones handle funeral and final costs without added financial stress.',
+        finalExpenseItem1: '• Simplified underwriting on many plans',
+        finalExpenseItem2: '• Fixed benefits paid to your beneficiaries',
+        finalExpenseItem3: '• No medical exam required on many policies',
+        footerBrand: 'Insurance Central Point',
+        footerDesc: 'Have questions about coverage? Our team is here to help you choose a plan that fits.',
+        footerCall: 'Call us',
+        footerInstagram: 'Follow us on Instagram',
+        footerOffice: 'Office',
+        copyright: '© <span id="year"></span> Insurance Central Point. All rights reserved.'
+      },
+      es: {
+        pageLang: 'es',
+        brandName: 'Insurance Central Point',
+        brandTagline: 'Proteccion en la que puedes confiar',
+        navHome: 'Inicio',
+        navServices: 'Servicios',
+        navContact: 'Contacto',
+        navQuote: 'Solicita una cotizacion',
+        instagramCta: 'Instagram',
+        partnersTitle: 'Nuestros socios',
+        partnersPrev: 'Ver socios anteriores',
+        partnersNext: 'Ver mas socios',
+        partnersRegion: 'Aseguradoras asociadas',
+        partnerLogoAlt: 'Logo de aseguradora asociada',
+        servicesPrev: 'Ver servicios anteriores',
+        servicesNext: 'Ver mas servicios',
+        servicesRegion: 'Servicios de seguros que ofrecemos',
+        heroTitle: 'Cobertura simple y confiable<br class="hidden sm:block" />para lo que mas importa.',
+        heroDesc: 'En Insurance Central Point, te ayudamos a proteger tu auto, hogar y familia con planes claros y asesoria honesta. Sin terminos confusos. Sin presion. Solo cobertura con la que puedes sentirte tranquilo.',
+        badgeLicensed: 'Agentes con licencia y certificados',
+        badgeYears: 'Sirviendo a familias por mas de 20 anos',
+        ctaQuote: 'Solicita una cotizacion',
+        ctaCall: 'O llamanos directamente al <span class="font-semibold">1 (786) 212‑0436</span>.',
+        whyTitle: 'Por que Insurance Central Point?',
+        why1: 'Polizas claras y faciles de entender, sin cargos ocultos.',
+        why2: 'Soporte rapido para reclamos con un equipo local dedicado.',
+        why3: 'Planes flexibles que se ajustan a tu presupuesto y estilo de vida.',
+        quickStart: 'Comienza en menos de 60 segundos',
+        nameLabel: 'Nombre completo',
+        namePlaceholder: 'ej. Alex Johnson',
+        phoneLabel: 'Numero de telefono',
+        phonePlaceholder: 'ej. 786-000-1234',
+        coverageLabel: 'Tipo de cobertura',
+        optHealth: 'Seguro medico',
+        optHome: 'Seguro de hogar',
+        optLife: 'Seguro de vida',
+        optDental: 'Seguro dental',
+        optVision: 'Seguro de vision',
+        optFinalExpense: 'Seguro de gastos finales',
+        requestCallback: 'Solicitar llamada',
+        callbackNote: 'Un agente con licencia te llamara para explicar tus opciones. Sin compromiso.',
+        servicesTitle: 'Nuestros Servicios',
+        servicesDesc: 'Ofrecemos planes simples y directos para proteger tu vida diaria.',
+        autoTitle: 'Seguro de Auto',
+        autoTag: 'Conduccion diaria',
+        autoDesc: 'Proteccion para tu auto, camioneta o SUV con opciones de cobertura que te ayudan a seguir en el camino y preparado para lo inesperado.',
+        autoItem1: '• Opciones de responsabilidad, colision y cobertura completa',
+        autoItem2: '• Descuentos para conductores seguros y familias con varios autos',
+        autoItem3: '• Soporte rapido para reclamos cuando mas lo necesitas',
+        homeTitle: 'Seguro de Hogar',
+        homeTag: 'Tu espacio',
+        homeDesc: 'Cobertura para tu casa, condominio o apartamento para que tengas tranquilidad de que tu espacio esta protegido de las sorpresas de la vida.',
+        homeItem1: '• Proteccion para tu hogar y pertenencias',
+        homeItem2: '• Opciones para inquilinos, propietarios y arrendadores',
+        homeItem3: '• Apoyo en casos de tormentas, incendios, robos y mas',
+        lifeTitle: 'Seguro de Vida',
+        lifeTag: 'Tu familia',
+        lifeDesc: 'Planes que ayudan a cuidar a las personas que amas, para que planifiques el manana con tranquilidad hoy.',
+        lifeItem1: '• Opciones de vida a termino y vida entera',
+        lifeItem2: '• Proceso de solicitud simple y guiado',
+        lifeItem3: '• Montos de cobertura flexibles',
+        healthTitle: 'Seguro medico',
+        healthTag: 'Tu bienestar',
+        healthDesc: 'Planes medicos que ayudan a cubrir consultas, medicamentos y hospitalizacion para que te concentres en tu salud.',
+        healthItem1: '• Cuidado preventivo y beneficios esenciales de salud',
+        healthItem2: '• Flexibilidad dentro y fuera de la red',
+        healthItem3: '• Asesoria para elegir un plan acorde a tu presupuesto',
+        dentalTitle: 'Seguro dental',
+        dentalTag: 'Tu sonrisa',
+        dentalDesc: 'Cobertura para limpiezas, empastes y tratamientos mayores con beneficios claros y faciles de entender.',
+        dentalItem1: '• Examenes de rutina, radiografias y cuidado preventivo',
+        dentalItem2: '• Opciones de ortodoncia en planes seleccionados',
+        dentalItem3: '• Acceso a amplias redes de dentistas',
+        visionTitle: 'Seguro de vision',
+        visionTag: 'Vision clara',
+        visionDesc: 'Examenes de la vista, lentes y monturas para que el cuidado visual rutinario sea simple y accesible.',
+        visionItem1: '• Beneficios para examen anual',
+        visionItem2: '• Montos para lentes de contacto o anteojos',
+        visionItem3: '• Ahorros en comercios y proveedores participantes',
+        finalExpenseTitle: 'Seguro de gastos finales',
+        finalExpenseTag: 'Tranquilidad',
+        finalExpenseDesc: 'Cobertura tipo vida entera que ayuda a los seres queridos con gastos funerarios y finales sin estres economico.',
+        finalExpenseItem1: '• Suscripcion simplificada en muchos planes',
+        finalExpenseItem2: '• Beneficios fijos pagados a tus beneficiarios',
+        finalExpenseItem3: '• Sin examen medico en muchas polizas',
+        footerBrand: 'Insurance Central Point',
+        footerDesc: 'Tienes preguntas sobre cobertura? Nuestro equipo esta aqui para ayudarte a elegir un plan que se ajuste a ti.',
+        footerCall: 'Llamanos',
+        footerInstagram: 'Siguenos en Instagram',
+        footerOffice: 'Oficina',
+        copyright: '© <span id="year"></span> Insurance Central Point. Todos los derechos reservados.'
+      }
+    };
+
+    function setLanguage(lang) {
+      const content = translations[lang] || translations.en;
+      document.documentElement.lang = content.pageLang;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        if (content[key]) {
+          el.innerHTML = content[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+        const key = el.dataset.i18nPlaceholder;
+        if (content[key]) {
+          el.placeholder = content[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (key && content[key]) {
+          el.setAttribute('aria-label', content[key]);
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+        const key = el.dataset.i18nAlt;
+        if (content[key]) {
+          el.alt = content[key];
+        }
+      });
+
+      // Keep year visible after replacing footer copyright content.
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.querySelectorAll('.lang-toggle').forEach((button) => {
+        const isActive = button.dataset.lang === lang;
+        button.classList.toggle('ring-2', isActive);
+        button.classList.toggle('ring-white', isActive);
+      });
+
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    document.querySelectorAll('.lang-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    setLanguage(localStorage.getItem('preferredLanguage') || 'en');
+
+    (function initPartnerCarousel() {
+      const scroller = document.getElementById('partner-scroller');
+      const prev = document.querySelector('[data-partner-prev]');
+      const next = document.querySelector('[data-partner-next]');
+      const section = document.getElementById('partners');
+      if (!scroller || !prev || !next) return;
+
+      const AUTOPLAY_MS = 4500;
+      let autoplayId = null;
+
+      function scrollStep() {
+        const slide = scroller.querySelector('.partner-logo');
+        if (!slide) return Math.max(200, scroller.clientWidth * 0.65);
+        const styles = getComputedStyle(scroller);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+        return slide.getBoundingClientRect().width + gap;
+      }
+
+      function maxScrollLeft() {
+        return Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+      }
+
+      function canScroll() {
+        return maxScrollLeft() > 2;
+      }
+
+      function isAtEnd() {
+        return scroller.scrollLeft >= maxScrollLeft() - 2;
+      }
+
+      function isAtStart() {
+        return scroller.scrollLeft <= 2;
+      }
+
+      function goNext() {
+        if (!canScroll()) return;
+        if (isAtEnd()) {
+          scroller.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scroller.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+        }
+      }
+
+      function goPrev() {
+        if (!canScroll()) return;
+        if (isAtStart()) {
+          scroller.scrollTo({ left: maxScrollLeft(), behavior: 'smooth' });
+        } else {
+          scroller.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+        }
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        if (!canScroll()) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        autoplayId = window.setInterval(goNext, AUTOPLAY_MS);
+      }
+
+      function stopAutoplay() {
+        if (autoplayId !== null) {
+          window.clearInterval(autoplayId);
+          autoplayId = null;
+        }
+      }
+
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      prev.addEventListener('click', () => {
+        goPrev();
+        restartAutoplay();
+      });
+      next.addEventListener('click', () => {
+        goNext();
+        restartAutoplay();
+      });
+
+      if (section) {
+        section.addEventListener('mouseenter', stopAutoplay);
+        section.addEventListener('mouseleave', startAutoplay);
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopAutoplay();
+        } else if (canScroll() && (!section || !section.matches(':hover'))) {
+          startAutoplay();
+        }
+      });
+
+      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => {
+        stopAutoplay();
+        if (!document.hidden && canScroll() && (!section || !section.matches(':hover'))) {
+          startAutoplay();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        stopAutoplay();
+        if (canScroll() && (!section || !section.matches(':hover'))) {
+          startAutoplay();
+        }
+      });
+
+      startAutoplay();
+    })();
+
+    (function initServicesCarousel() {
+      const scroller = document.getElementById('services-scroller');
+      const prev = document.querySelector('[data-service-prev]');
+      const next = document.querySelector('[data-service-next]');
+      const section = document.getElementById('services');
+      if (!scroller || !prev || !next) return;
+
+      const AUTOPLAY_MS = 5000;
+      let autoplayId = null;
+
+      function scrollStep() {
+        const slide = scroller.querySelector('.service-card');
+        if (!slide) return Math.max(240, scroller.clientWidth * 0.72);
+        const styles = getComputedStyle(scroller);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+        return slide.getBoundingClientRect().width + gap;
+      }
+
+      function maxScrollLeft() {
+        return Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+      }
+
+      function canScroll() {
+        return maxScrollLeft() > 2;
+      }
+
+      function isAtEnd() {
+        return scroller.scrollLeft >= maxScrollLeft() - 2;
+      }
+
+      function isAtStart() {
+        return scroller.scrollLeft <= 2;
+      }
+
+      function goNext() {
+        if (!canScroll()) return;
+        if (isAtEnd()) {
+          scroller.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          scroller.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+        }
+      }
+
+      function goPrev() {
+        if (!canScroll()) return;
+        if (isAtStart()) {
+          scroller.scrollTo({ left: maxScrollLeft(), behavior: 'smooth' });
+        } else {
+          scroller.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+        }
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        if (!canScroll()) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        autoplayId = window.setInterval(goNext, AUTOPLAY_MS);
+      }
+
+      function stopAutoplay() {
+        if (autoplayId !== null) {
+          window.clearInterval(autoplayId);
+          autoplayId = null;
+        }
+      }
+
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      prev.addEventListener('click', () => {
+        goPrev();
+        restartAutoplay();
+      });
+      next.addEventListener('click', () => {
+        goNext();
+        restartAutoplay();
+      });
+
+      if (section) {
+        section.addEventListener('mouseenter', stopAutoplay);
+        section.addEventListener('mouseleave', startAutoplay);
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopAutoplay();
+        } else if (canScroll() && (!section || !section.matches(':hover'))) {
+          startAutoplay();
+        }
+      });
+
+      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => {
+        stopAutoplay();
+        if (!document.hidden && canScroll() && (!section || !section.matches(':hover'))) {
+          startAutoplay();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        stopAutoplay();
+        if (canScroll() && (!section || !section.matches(':hover'))) {
+          startAutoplay();
+        }
+      });
+
+      startAutoplay();
+    })();
+  </script>
+</body>
+</html>

@@ -139,31 +139,38 @@
                 </li>
               </ul>
 
-              <!-- Mini quote form (non-functional) -->
+              <!-- Callback request form -->
               <div class="pt-3 border-t border-slate-200">
                 <p class="text-xs font-medium text-slategray uppercase tracking-wide mb-3" data-i18n="quickStart">
                   Start in under 60 seconds
                 </p>
-                <form class="space-y-3">
+                <form id="callback-form" class="space-y-3" novalidate>
+                  <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
                   <div>
                     <label class="block text-xs font-medium text-slate-700 mb-1" for="fullname" data-i18n="nameLabel">
                       Full Name
                     </label>
                     <input
                       id="fullname"
+                      name="name"
                       type="text"
+                      required
+                      autocomplete="name"
                       placeholder="e.g. Alex Johnson"
                       data-i18n-placeholder="namePlaceholder"
                       class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-slate-700 mb-1" for="zip" data-i18n="phoneLabel">
+                    <label class="block text-xs font-medium text-slate-700 mb-1" for="phonenumber" data-i18n="phoneLabel">
                       Phone Number
                     </label>
                     <input
                       id="phonenumber"
-                      type="text"
+                      name="phone"
+                      type="tel"
+                      required
+                      autocomplete="tel"
                       placeholder="e.g. 786-000-1234"
                       data-i18n-placeholder="phonePlaceholder"
                       class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
@@ -175,23 +182,27 @@
                     </label>
                     <select
                       id="coverage"
+                      name="coverage"
+                      required
                       class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     >
-                      <option data-i18n="optHealth">Health Insurance</option>
-                      <option data-i18n="optHome">Home Insurance</option>
-                      <option data-i18n="optLife">Life Insurance</option>
-                      <option data-i18n="optDental">Dental Insurance</option>
-                      <option data-i18n="optVision">Vision Insurance</option>
-                      <option data-i18n="optFinalExpense">Final Expense Insurance</option>
+                      <option value="health" data-i18n="optHealth">Health Insurance</option>
+                      <option value="home" data-i18n="optHome">Home Insurance</option>
+                      <option value="life" data-i18n="optLife">Life Insurance</option>
+                      <option value="dental" data-i18n="optDental">Dental Insurance</option>
+                      <option value="vision" data-i18n="optVision">Vision Insurance</option>
+                      <option value="final-expense" data-i18n="optFinalExpense">Final Expense Insurance</option>
                     </select>
                   </div>
                   <button
-                    type="button"
-                    class="w-full inline-flex items-center justify-center rounded-md bg-navy px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 focus:ring-offset-white transition"
+                    id="callback-submit"
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center rounded-md bg-navy px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 focus:ring-offset-white transition disabled:cursor-not-allowed disabled:opacity-60"
                     data-i18n="requestCallback"
                   >
                     Request a Call Back
                   </button>
+                  <p id="callback-status" class="text-[11px] text-slate-500" role="status" aria-live="polite" hidden></p>
                   <p class="text-[11px] text-slate-500" data-i18n="callbackNote">
                     A licensed agent will call you to walk through your options. No obligation.
                   </p>
@@ -226,86 +237,161 @@
               role="region"
               data-i18n-aria="partnersRegion"
             >
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">AmeriHealth Caritas Next</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="AmeriHealth Caritas Next">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/amerihealth-caritas-next.png" alt="AmeriHealth Caritas Next" loading="lazy" decoding="async" data-partner-label="AmeriHealth Caritas Next" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Medica</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Medica">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/medica.png" alt="Medica" loading="lazy" decoding="async" data-partner-label="Medica" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Health First Health Plans</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Health First Health Plans">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/health-first-health-plans.png" alt="Health First Health Plans" loading="lazy" decoding="async" data-partner-label="Health First Health Plans" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of Texas</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Blue Cross Blue Shield of Texas">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/bcbs-texas.png" alt="Blue Cross Blue Shield of Texas" loading="lazy" decoding="async" data-partner-label="Blue Cross Blue Shield of Texas" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of North Carolina</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Blue Cross Blue Shield of North Carolina">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/bcbs-north-carolina.png" alt="Blue Cross Blue Shield of North Carolina" loading="lazy" decoding="async" data-partner-label="Blue Cross Blue Shield of North Carolina" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of Illinois</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Florida Blue">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/florida-blue.png" alt="Florida Blue" loading="lazy" decoding="async" data-partner-label="Florida Blue" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Blue Cross Blue Shield of Oklahoma</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Community Health Choice">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/community-health-choice.png" alt="Community Health Choice" loading="lazy" decoding="async" data-partner-label="Community Health Choice" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Florida Blue</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Cigna Healthcare">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/cigna-healthcare.png" alt="Cigna Healthcare" loading="lazy" decoding="async" data-partner-label="Cigna Healthcare" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Community Health Choice</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Molina Healthcare">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/molina-healthcare.png" alt="Molina Healthcare" loading="lazy" decoding="async" data-partner-label="Molina Healthcare" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Cigna Healthcare</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="United Healthcare">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/united-healthcare.png" alt="United Healthcare" loading="lazy" decoding="async" data-partner-label="United Healthcare" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Molina Healthcare</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="CVS Health | Aetna">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/cvs-aetna.png" alt="CVS Health | Aetna" loading="lazy" decoding="async" data-partner-label="CVS Health | Aetna" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">United Healthcare</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Ambetter">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/ambetter.png" alt="Ambetter" loading="lazy" decoding="async" data-partner-label="Ambetter" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">CVS Health | Aetna</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Select Health">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/select-health.png" alt="Select Health" loading="lazy" decoding="async" data-partner-label="Select Health" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Ambetter</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="CareSource">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/caresource.png" alt="CareSource" loading="lazy" decoding="async" data-partner-label="CareSource" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Select Health</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Oscar">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/oscar.png" alt="Oscar" loading="lazy" decoding="async" data-partner-label="Oscar" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">CareSource</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Wellcare">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/wellcare.png" alt="Wellcare" loading="lazy" decoding="async" data-partner-label="Wellcare" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Oscar</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Optimum HealthCare, Inc">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/optimum-healthcare.png" alt="Optimum HealthCare, Inc" loading="lazy" decoding="async" data-partner-label="Optimum HealthCare, Inc" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Wellcare</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Preferred Care Network">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/preferred-care-network.png" alt="Preferred Care Network" loading="lazy" decoding="async" data-partner-label="Preferred Care Network" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Optimum HealthCare, Inc</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="HealthSun Health Plans">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/healthsun.png" alt="HealthSun Health Plans" loading="lazy" decoding="async" data-partner-label="HealthSun Health Plans" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Preferred Care Network</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Solis Health Plans">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/solis.png" alt="Solis Health Plans" loading="lazy" decoding="async" data-partner-label="Solis Health Plans" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">HealthSun Health Plans</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Preferred Care Partners">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/preferred-care-partners.png" alt="Preferred Care Partners" loading="lazy" decoding="async" data-partner-label="Preferred Care Partners" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Solis Health Plans</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Devoted">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/devoted.png" alt="Devoted" loading="lazy" decoding="async" data-partner-label="Devoted" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Preferred Care Partners</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Freedom Health">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/freedom-health.png" alt="Freedom Health" loading="lazy" decoding="async" data-partner-label="Freedom Health" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Devoted</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Humana">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/humana.png" alt="Humana" loading="lazy" decoding="async" data-partner-label="Humana" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Freedom Health Humana</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Care Plus Health Plans, Inc">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/care-plus.png" alt="Care Plus Health Plans, Inc" loading="lazy" decoding="async" data-partner-label="Care Plus Health Plans, Inc" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Care Plus Health Plans, Inc</div>
-              </div>
-              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]">
-                <div class="flex h-14 w-full items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-center text-sm font-semibold leading-tight text-slate-700 sm:h-16">Doctors Healthcare Plans, Inc</div>
+              <div class="partner-logo flex min-w-[72%] snap-center snap-always items-center justify-center sm:snap-start sm:min-w-[45%] md:min-w-[31%] lg:min-w-[23%]" role="group" aria-label="Doctors Healthcare Plans, Inc">
+                <div class="partner-slide-frame flex min-h-[3.5rem] w-full flex-col items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 sm:min-h-[4rem]">
+                  <img class="partner-slide-img max-h-12 w-auto max-w-full shrink-0 object-contain sm:max-h-14" src="images/partners/logos/doctors-healthcare.png" alt="Doctors Healthcare Plans, Inc" loading="lazy" decoding="async" data-partner-label="Doctors Healthcare Plans, Inc" onerror="window.partnerLogoFallback&&window.partnerLogoFallback(this)" />
+                  <div class="partner-slide-fallback hidden px-2 text-center text-xs font-semibold leading-tight text-slate-700 sm:text-sm"></div>
+                </div>
               </div>
             </div>
             <button
@@ -534,6 +620,7 @@
     </footer>
   </div>
 
+  <script src="js/callback-config.js"></script>
   <script>
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -579,6 +666,12 @@
         optVision: 'Vision Insurance',
         optFinalExpense: 'Final Expense Insurance',
         requestCallback: 'Request a Call Back',
+        callbackSending: 'Sending...',
+        callbackSuccess: 'Thank you! A licensed agent will call you soon.',
+        callbackError: 'Something went wrong. Please call us at 1 (786) 212-0436.',
+        callbackNameRequired: 'Please enter your full name.',
+        callbackPhoneRequired: 'Please enter your phone number.',
+        callbackNotConfigured: 'Callback is not set up yet. Please call us directly.',
         callbackNote: 'A licensed agent will call you to walk through your options. No obligation.',
         servicesTitle: 'Our Services',
         servicesDesc: 'We offer simple, straightforward plans built to protect your everyday life.',
@@ -651,7 +744,7 @@
         heroTitle: 'Cobertura simple y confiable<br class="hidden sm:block" />para lo que mas importa.',
         heroDesc: 'En Insurance Central Point, te ayudamos a proteger tu auto, hogar y familia con planes claros y asesoria honesta. Sin terminos confusos. Sin presion. Solo cobertura con la que puedes sentirte tranquilo.',
         badgeLicensed: 'Agentes con licencia y certificados',
-        badgeYears: 'Sirviendo a familias por mas de 20 anos',
+        badgeYears: 'Sirviendo a familias por mas de 20 años',
         ctaQuote: 'Solicita una cotizacion',
         ctaCall: 'O llamanos directamente al <span class="font-semibold">1 (786) 212‑0436</span>.',
         whyTitle: 'Por que Insurance Central Point?',
@@ -671,6 +764,12 @@
         optVision: 'Seguro de vision',
         optFinalExpense: 'Seguro de gastos finales',
         requestCallback: 'Solicitar llamada',
+        callbackSending: 'Enviando...',
+        callbackSuccess: 'Gracias. Un agente con licencia te llamara pronto.',
+        callbackError: 'Algo salio mal. Por favor llamanos al 1 (786) 212-0436.',
+        callbackNameRequired: 'Por favor ingresa tu nombre completo.',
+        callbackPhoneRequired: 'Por favor ingresa tu numero de telefono.',
+        callbackNotConfigured: 'La solicitud de llamada no esta configurada. Por favor llamanos directamente.',
         callbackNote: 'Un agente con licencia te llamara para explicar tus opciones. Sin compromiso.',
         servicesTitle: 'Nuestros Servicios',
         servicesDesc: 'Ofrecemos planes simples y directos para proteger tu vida diaria.',
@@ -776,6 +875,30 @@
     });
 
     setLanguage(localStorage.getItem('preferredLanguage') || 'en');
+
+    window.partnerLogoFallback = function (img) {
+      if (!img || img.dataset.partnerFallbackApplied === 'true') return;
+      img.dataset.partnerFallbackApplied = 'true';
+      const label = img.dataset.partnerLabel || img.alt || '';
+      const frame = img.closest('.partner-slide-frame');
+      if (!frame) return;
+      const fallback = frame.querySelector('.partner-slide-fallback');
+      if (!fallback) return;
+      img.classList.add('hidden');
+      fallback.textContent = label;
+      fallback.classList.remove('hidden');
+    };
+
+    document.querySelectorAll('.partner-slide-img').forEach((img) => {
+      const src = (img.getAttribute('src') || '').trim();
+      if (!src) {
+        window.partnerLogoFallback(img);
+        return;
+      }
+      if (img.complete && img.naturalWidth === 0) {
+        window.partnerLogoFallback(img);
+      }
+    });
 
     (function initPartnerCarousel() {
       const scroller = document.getElementById('partner-scroller');
@@ -995,6 +1118,96 @@
       });
 
       startAutoplay();
+    })();
+
+    function getTranslation(key) {
+      const lang = localStorage.getItem('preferredLanguage') || 'en';
+      return (translations[lang] || translations.en)[key] || '';
+    }
+
+    (function initCallbackForm() {
+      const form = document.getElementById('callback-form');
+      const statusEl = document.getElementById('callback-status');
+      const submitBtn = document.getElementById('callback-submit');
+      if (!form || !submitBtn) return;
+
+      function showStatus(message, type) {
+        if (!statusEl) return;
+        statusEl.textContent = message;
+        statusEl.hidden = !message;
+        statusEl.classList.remove('text-slate-500', 'text-emerald-700', 'text-red-600');
+        if (type === 'success') {
+          statusEl.classList.add('text-emerald-700');
+        } else if (type === 'error') {
+          statusEl.classList.add('text-red-600');
+        } else {
+          statusEl.classList.add('text-slate-500');
+        }
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const config = window.CALLBACK_CONFIG;
+        if (!config || !config.primaryRecipient) {
+          showStatus(getTranslation('callbackNotConfigured'), 'error');
+          return;
+        }
+
+        const fullName = document.getElementById('fullname').value.trim();
+        const phone = document.getElementById('phonenumber').value.trim();
+        const coverageSelect = document.getElementById('coverage');
+        const coverageLabel = coverageSelect.options[coverageSelect.selectedIndex].textContent.trim();
+
+        if (!fullName) {
+          showStatus(getTranslation('callbackNameRequired'), 'error');
+          return;
+        }
+        if (!phone) {
+          showStatus(getTranslation('callbackPhoneRequired'), 'error');
+          return;
+        }
+
+        const recipient = config.primaryRecipient;
+
+        const buttonKey = submitBtn.dataset.i18n || 'requestCallback';
+        submitBtn.disabled = true;
+        submitBtn.textContent = getTranslation('callbackSending');
+        showStatus('', '');
+
+        try {
+          const formData = new FormData();
+          formData.append('name', fullName);
+          formData.append('phone', phone);
+          formData.append('coverage_type', coverageLabel);
+          formData.append('_subject', `Callback Request: ${coverageLabel}`);
+          formData.append('_template', 'table');
+          formData.append('_captcha', 'false');
+          if (config.ccRecipient) {
+            formData.append('_cc', config.ccRecipient);
+          }
+
+          const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: formData
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.success) {
+            showStatus(getTranslation('callbackSuccess'), 'success');
+            form.reset();
+          } else {
+            throw new Error(result.message || 'Request failed');
+          }
+        } catch (error) {
+          showStatus(getTranslation('callbackError'), 'error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = getTranslation(buttonKey);
+        }
+      });
     })();
   </script>
 </body>

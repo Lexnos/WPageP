@@ -232,7 +232,7 @@
             </button>
             <div
               id="partner-scroller"
-              class="partner-scroller flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth py-2 px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x max-sm:[scroll-padding-inline:max(1rem,calc((100%-72%)/2))] sm:px-16"
+              class="partner-scroller flex w-full min-w-0 snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth py-2 px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x cursor-grab active:cursor-grabbing [&_.partner-logo]:shrink-0 max-sm:[scroll-padding-inline:max(1rem,calc((100%-72%)/2))] sm:px-16"
               tabindex="0"
               role="region"
               data-i18n-aria="partnersRegion"
@@ -433,7 +433,7 @@
             </button>
             <div
               id="services-scroller"
-              class="services-scroller flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth py-2 px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x sm:px-14"
+              class="services-scroller flex w-full min-w-0 snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth py-2 px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x cursor-grab active:cursor-grabbing sm:px-14"
               tabindex="0"
               role="region"
               data-i18n-aria="servicesRegion"
@@ -609,8 +609,8 @@
         <div class="border-t border-slate-700 pt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-slate-400">
           <div>
             <p class="font-medium text-slate-200" data-i18n="footerOffice">Office</p>
-            <p>123 Harborview Lane, Suite 400</p>
-            <p>Bayview, ST 98765</p>
+            <p>198 NW 37th Ave</p>
+            <p>Miami, FL 33125</p>
           </div>
           <p class="md:text-right" data-i18n="copyright">
             © <span id="year"></span> Insurance Central Point. All rights reserved.
@@ -900,22 +900,21 @@
       }
     });
 
-    (function initPartnerCarousel() {
-      const scroller = document.getElementById('partner-scroller');
-      const prev = document.querySelector('[data-partner-prev]');
-      const next = document.querySelector('[data-partner-next]');
-      const section = document.getElementById('partners');
+    function initHorizontalCarousel(config) {
+      const scroller = document.getElementById(config.scrollerId);
+      const prev = document.querySelector(config.prevSelector);
+      const next = document.querySelector(config.nextSelector);
+      const section = config.sectionId ? document.getElementById(config.sectionId) : null;
       if (!scroller || !prev || !next) return;
 
-      const AUTOPLAY_MS = 4500;
       let autoplayId = null;
+      let dragActive = false;
+      let dragStartX = 0;
+      let dragScrollLeft = 0;
+      let dragMoved = false;
 
-      function scrollStep() {
-        const slide = scroller.querySelector('.partner-logo');
-        if (!slide) return Math.max(200, scroller.clientWidth * 0.65);
-        const styles = getComputedStyle(scroller);
-        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
-        return slide.getBoundingClientRect().width + gap;
+      function getSlides() {
+        return Array.from(scroller.querySelectorAll(config.slideSelector));
       }
 
       function maxScrollLeft() {
@@ -926,29 +925,51 @@
         return maxScrollLeft() > 2;
       }
 
-      function isAtEnd() {
-        return scroller.scrollLeft >= maxScrollLeft() - 2;
+      function getActiveIndex() {
+        const slides = getSlides();
+        if (!slides.length) return 0;
+        let bestIndex = 0;
+        let bestDistance = Infinity;
+        slides.forEach((slide, index) => {
+          const distance = Math.abs(slide.offsetLeft - scroller.scrollLeft);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+        return bestIndex;
       }
 
-      function isAtStart() {
-        return scroller.scrollLeft <= 2;
+      function goToIndex(index) {
+        const slides = getSlides();
+        if (!slides.length) return;
+        const count = slides.length;
+        const targetIndex = ((index % count) + count) % count;
+        slides[targetIndex].scrollIntoView({
+          behavior: 'smooth',
+          inline: 'start',
+          block: 'nearest'
+        });
       }
 
       function goNext() {
         if (!canScroll()) return;
-        if (isAtEnd()) {
+        const slides = getSlides();
+        const currentIndex = getActiveIndex();
+        if (currentIndex >= slides.length - 1) {
           scroller.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          scroller.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+          goToIndex(currentIndex + 1);
         }
       }
 
       function goPrev() {
         if (!canScroll()) return;
-        if (isAtStart()) {
+        const currentIndex = getActiveIndex();
+        if (currentIndex <= 0) {
           scroller.scrollTo({ left: maxScrollLeft(), behavior: 'smooth' });
         } else {
-          scroller.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+          goToIndex(currentIndex - 1);
         }
       }
 
@@ -956,7 +977,7 @@
         stopAutoplay();
         if (!canScroll()) return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        autoplayId = window.setInterval(goNext, AUTOPLAY_MS);
+        autoplayId = window.setInterval(goNext, config.autoplayMs);
       }
 
       function stopAutoplay() {
@@ -971,114 +992,15 @@
         startAutoplay();
       }
 
-      prev.addEventListener('click', () => {
-        goPrev();
-        restartAutoplay();
-      });
-      next.addEventListener('click', () => {
-        goNext();
-        restartAutoplay();
-      });
-
-      if (section) {
-        section.addEventListener('mouseenter', stopAutoplay);
-        section.addEventListener('mouseleave', startAutoplay);
+      function shouldAutoplay() {
+        return canScroll() && !document.hidden && (!section || !section.matches(':hover'));
       }
 
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          stopAutoplay();
-        } else if (canScroll() && (!section || !section.matches(':hover'))) {
+      function refreshAutoplay() {
+        stopAutoplay();
+        if (shouldAutoplay()) {
           startAutoplay();
         }
-      });
-
-      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => {
-        stopAutoplay();
-        if (!document.hidden && canScroll() && (!section || !section.matches(':hover'))) {
-          startAutoplay();
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        stopAutoplay();
-        if (canScroll() && (!section || !section.matches(':hover'))) {
-          startAutoplay();
-        }
-      });
-
-      startAutoplay();
-    })();
-
-    (function initServicesCarousel() {
-      const scroller = document.getElementById('services-scroller');
-      const prev = document.querySelector('[data-service-prev]');
-      const next = document.querySelector('[data-service-next]');
-      const section = document.getElementById('services');
-      if (!scroller || !prev || !next) return;
-
-      const AUTOPLAY_MS = 5000;
-      let autoplayId = null;
-
-      function scrollStep() {
-        const slide = scroller.querySelector('.service-card');
-        if (!slide) return Math.max(240, scroller.clientWidth * 0.72);
-        const styles = getComputedStyle(scroller);
-        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
-        return slide.getBoundingClientRect().width + gap;
-      }
-
-      function maxScrollLeft() {
-        return Math.max(0, scroller.scrollWidth - scroller.clientWidth);
-      }
-
-      function canScroll() {
-        return maxScrollLeft() > 2;
-      }
-
-      function isAtEnd() {
-        return scroller.scrollLeft >= maxScrollLeft() - 2;
-      }
-
-      function isAtStart() {
-        return scroller.scrollLeft <= 2;
-      }
-
-      function goNext() {
-        if (!canScroll()) return;
-        if (isAtEnd()) {
-          scroller.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          scroller.scrollBy({ left: scrollStep(), behavior: 'smooth' });
-        }
-      }
-
-      function goPrev() {
-        if (!canScroll()) return;
-        if (isAtStart()) {
-          scroller.scrollTo({ left: maxScrollLeft(), behavior: 'smooth' });
-        } else {
-          scroller.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
-        }
-      }
-
-      function startAutoplay() {
-        stopAutoplay();
-        if (!canScroll()) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        autoplayId = window.setInterval(goNext, AUTOPLAY_MS);
-      }
-
-      function stopAutoplay() {
-        if (autoplayId !== null) {
-          window.clearInterval(autoplayId);
-          autoplayId = null;
-        }
-      }
-
-      function restartAutoplay() {
-        stopAutoplay();
-        startAutoplay();
       }
 
       prev.addEventListener('click', () => {
@@ -1090,35 +1012,96 @@
         restartAutoplay();
       });
 
+      scroller.addEventListener('mousedown', (event) => {
+        if (event.button !== 0) return;
+        stopAutoplay();
+        dragActive = true;
+        dragMoved = false;
+        dragStartX = event.clientX;
+        dragScrollLeft = scroller.scrollLeft;
+        scroller.classList.add('select-none');
+      });
+
+      window.addEventListener('mousemove', (event) => {
+        if (!dragActive) return;
+        const deltaX = event.clientX - dragStartX;
+        if (Math.abs(deltaX) > 3) {
+          dragMoved = true;
+        }
+        scroller.scrollLeft = dragScrollLeft - deltaX;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!dragActive) return;
+        dragActive = false;
+        scroller.classList.remove('select-none');
+        if (shouldAutoplay()) {
+          startAutoplay();
+        }
+      });
+
+      scroller.addEventListener('click', (event) => {
+        if (dragMoved) {
+          event.preventDefault();
+          event.stopPropagation();
+          dragMoved = false;
+        }
+      });
+
+      scroller.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          goNext();
+          restartAutoplay();
+        } else if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          goPrev();
+          restartAutoplay();
+        }
+      });
+
       if (section) {
         section.addEventListener('mouseenter', stopAutoplay);
         section.addEventListener('mouseleave', startAutoplay);
       }
 
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          stopAutoplay();
-        } else if (canScroll() && (!section || !section.matches(':hover'))) {
-          startAutoplay();
-        }
-      });
+      document.addEventListener('visibilitychange', refreshAutoplay);
 
-      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => {
-        stopAutoplay();
-        if (!document.hidden && canScroll() && (!section || !section.matches(':hover'))) {
-          startAutoplay();
-        }
-      });
+      window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', refreshAutoplay);
 
-      window.addEventListener('resize', () => {
-        stopAutoplay();
-        if (canScroll() && (!section || !section.matches(':hover'))) {
-          startAutoplay();
-        }
+      window.addEventListener('resize', refreshAutoplay);
+      window.addEventListener('load', refreshAutoplay);
+
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(refreshAutoplay).observe(scroller);
+      }
+
+      scroller.querySelectorAll('img').forEach((img) => {
+        if (img.complete) return;
+        img.addEventListener('load', refreshAutoplay, { once: true });
+        img.addEventListener('error', refreshAutoplay, { once: true });
       });
 
       startAutoplay();
-    })();
+    }
+
+    initHorizontalCarousel({
+      scrollerId: 'partner-scroller',
+      slideSelector: '.partner-logo',
+      prevSelector: '[data-partner-prev]',
+      nextSelector: '[data-partner-next]',
+      sectionId: 'partners',
+      autoplayMs: 4500
+    });
+
+    initHorizontalCarousel({
+      scrollerId: 'services-scroller',
+      slideSelector: '.service-card',
+      prevSelector: '[data-service-prev]',
+      nextSelector: '[data-service-next]',
+      sectionId: 'services',
+      autoplayMs: 5000
+    });
 
     function getTranslation(key) {
       const lang = localStorage.getItem('preferredLanguage') || 'en';

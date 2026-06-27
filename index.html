@@ -26,12 +26,12 @@
     <!-- Header / Nav -->
     <header class="bg-navy text-white">
       <div class="max-w-auto xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <div class="h-9 w-9 rounded-full border border-white/20 bg-white/5">
+        <div class="flex items-center space-x-3">
+          <div class="h-12 w-12 rounded-full bg-white overflow-hidden flex items-center justify-center shadow-sm">
             <img
               src="images/ICPLogo.png"
               alt="Insurance Central Point logo"
-              class="h-full w-full object-fill"
+              class="h-full w-full object-cover scale-[1.8]"
             />
           </div>
           <div>
@@ -931,7 +931,8 @@
         let bestIndex = 0;
         let bestDistance = Infinity;
         slides.forEach((slide, index) => {
-          const distance = Math.abs(slide.offsetLeft - scroller.scrollLeft);
+          const slideLeft = slide.offsetLeft - (slide.offsetParent === scroller ? 0 : scroller.offsetLeft);
+          const distance = Math.abs(slideLeft - scroller.scrollLeft);
           if (distance < bestDistance) {
             bestDistance = distance;
             bestIndex = index;
@@ -945,10 +946,10 @@
         if (!slides.length) return;
         const count = slides.length;
         const targetIndex = ((index % count) + count) % count;
-        slides[targetIndex].scrollIntoView({
-          behavior: 'smooth',
-          inline: 'start',
-          block: 'nearest'
+        const targetLeft = slides[targetIndex].offsetLeft - (slides[targetIndex].offsetParent === scroller ? 0 : scroller.offsetLeft);
+        scroller.scrollTo({
+          left: targetLeft,
+          behavior: 'smooth'
         });
       }
 
@@ -1178,14 +1179,14 @@
 
           const result = await response.json();
 
-          if (response.ok && result.success) {
+          if (response.ok && (result.success === true || result.success === 'true')) {
             showStatus(getTranslation('callbackSuccess'), 'success');
             form.reset();
           } else {
-            throw new Error(result.message || 'Request failed');
+            throw new Error(result.message || getTranslation('callbackError'));
           }
         } catch (error) {
-          showStatus(getTranslation('callbackError'), 'error');
+          showStatus(error.message, 'error');
         } finally {
           submitBtn.disabled = false;
           submitBtn.textContent = getTranslation(buttonKey);

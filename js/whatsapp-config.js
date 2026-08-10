@@ -8,6 +8,9 @@ window.WHATSAPP_CONFIG = {
   // Set to false if you want it to appear on all devices.
   onlyMobile: true,
 
+  // Set to true to display the button ONLY to visitors from US IP addresses.
+  usOnly: true,
+
   // Destination phone number in international format without plus sign or hyphens.
   // Example: '17862120436' for +1 (786) 212-0436.
   phoneNumber: '17862120436',

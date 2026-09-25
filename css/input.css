@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Large-text mode toggled by the A / A+ buttons */
+html.text-lg-mode {
+  font-size: 118%;
+}
+
+/* Hero carousel backgrounds (kept in CSS so the page needs no inline styles) */
+.hero-bg-1 { background-image: url('../images/hero-bg.jpg'); }
+.hero-bg-2 { background-image: url('../images/hero-bg-2.jpg'); }
+.hero-bg-3 { background-image: url('../images/hero-bg-3.jpeg'); }

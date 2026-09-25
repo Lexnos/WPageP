@@ -1,0 +1,44 @@
+# Hostinger (Apache/LiteSpeed) settings for insurancecentralpoint.com
+# Each block is wrapped in IfModule so a missing module can never take the site down.
+
+# ---- Security headers ----
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  # Stops other sites from embedding this page in a frame (cannot be set from a <meta> tag).
+  Header always set Content-Security-Policy "frame-ancestors 'self'"
+</IfModule>
+
+# ---- Compression ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# ---- Browser caching ----
+# HTML is always revalidated so updates show up right away; CSS/JS for 1 day; images for 30 days.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType text/javascript "access plus 1 day"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+
+# ---- Optional: force HTTPS ----
+# Only uncomment AFTER the SSL certificate is active in hPanel and https://insurancecentralpoint.com loads.
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ---- Hide project/tooling files ----
+# Hostinger's GitHub import publishes the whole repository, so these must never be reachable from the web.
+<IfModule mod_alias.c>
+  RedirectMatch 404 "(?i)^/(package(-lock)?\.json|tailwind\.config\.js|scripts(/.*)?|css/input\.css|node_modules(/.*)?|\.vscode(/.*)?|\.git(/.*|attributes|ignore)?|dist(/.*)?|README.*)$"
+</IfModule>

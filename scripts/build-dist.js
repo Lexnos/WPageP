@@ -4,7 +4,7 @@ const root = path.resolve(__dirname, '..');
 const dist = path.join(root, 'dist');
 
 // Whitelist: anything not listed here (tooling, editor settings, sources) never reaches the server.
-const include = ['index.html', '.htaccess', 'css/styles.css', 'js', 'images'];
+const include = ['index.html', '.htaccess', 'robots.txt', 'sitemap.xml', 'css/styles.css', 'js', 'images'];
 
 fs.rmSync(dist, { recursive: true, force: true });
 for (const item of include) {

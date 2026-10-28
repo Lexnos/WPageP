@@ -20,7 +20,12 @@ const translations = {
     callUsNum: '1 (305) 402-9114',
     altPhoneLabel: 'Other line:',
     preferPhone: 'Prefer to speak on the phone right now?',
+    carouselPause: 'Pause scrolling',
+    carouselPlay: 'Resume scrolling',
+    heroPause: 'Pause slideshow',
+    heroPlay: 'Play slideshow',
     textSizeLabel: 'Text Size',
+    skipToContent: 'Skip to content',
     navPartners: 'Partners',
     navServices: 'Services',
     navContact: 'Contact',
@@ -58,7 +63,7 @@ const translations = {
     optVision: 'Vision Insurance',
     optFinalExpense: 'Final Expense Insurance',
     requestCallback: 'Request a Call Back',
-    callbackSending: 'Sending...',
+    callbackSending: 'Sending…',
     callbackSuccess: 'Thank you! A licensed agent will call you soon.',
     callbackError: 'Something went wrong. Please call us at 1 (305) 402-9114.',
     callbackNameRequired: 'Please enter your full name.',
@@ -71,45 +76,45 @@ const translations = {
     autoTitle: 'Auto Insurance',
     autoTag: 'Everyday driving',
     autoDesc: 'Protection for your car, truck, or SUV with coverage options that help you stay on the road and prepared for the unexpected.',
-    autoItem1: '• Liability, collision, and comprehensive options',
-    autoItem2: '• Discounts for safe drivers and multi‑car families',
-    autoItem3: '• Fast claims support when you need it most',
+    autoItem1: 'Liability, collision, and comprehensive options',
+    autoItem2: 'Discounts for safe drivers and multi‑car families',
+    autoItem3: 'Fast claims support when you need it most',
     homeTitle: 'Home Insurance',
     homeTag: 'Your space',
     homeDesc: 'Coverage for your house, condo, or apartment so you can feel confident your space is protected from life’s surprises.',
-    homeItem1: '• Protection for your home and belongings',
-    homeItem2: '• Options for renters, owners, and landlords',
-    homeItem3: '• Support with storms, fire, theft, and more',
+    homeItem1: 'Protection for your home and belongings',
+    homeItem2: 'Options for renters, owners, and landlords',
+    homeItem3: 'Support with storms, fire, theft, and more',
     lifeTitle: 'Life Insurance',
     lifeTag: 'Your family',
     lifeDesc: 'Plans that help take care of the people you love, so you can plan for tomorrow with peace of mind today.',
-    lifeItem1: '• Term and whole life options',
-    lifeItem2: '• Simple, guided application process',
-    lifeItem3: '• Flexible coverage amounts',
+    lifeItem1: 'Term and whole life options',
+    lifeItem2: 'Simple, guided application process',
+    lifeItem3: 'Flexible coverage amounts',
     healthTitle: 'Health Insurance',
     healthTag: 'Your wellbeing',
     healthDesc: 'Medical plans that help cover doctor visits, prescriptions, and hospital care so you can focus on staying healthy.',
-    healthItem1: '• Preventive care and essential health benefits',
-    healthItem2: '• In-network and PPO-style flexibility',
-    healthItem3: '• Guidance choosing a plan that fits your budget',
+    healthItem1: 'Preventive care and essential health benefits',
+    healthItem2: 'In-network and PPO-style flexibility',
+    healthItem3: 'Guidance choosing a plan that fits your budget',
     dentalTitle: 'Dental Insurance',
     dentalTag: 'Your smile',
     dentalDesc: 'Coverage for cleanings, fillings, and major dental work with clear benefits you can understand.',
-    dentalItem1: '• Routine exams, X-rays, and preventive care',
-    dentalItem2: '• Orthodontia options on select plans',
-    dentalItem3: '• Access to broad dentist networks',
+    dentalItem1: 'Routine exams, X-rays, and preventive care',
+    dentalItem2: 'Orthodontia options on select plans',
+    dentalItem3: 'Access to broad dentist networks',
     visionTitle: 'Vision Insurance',
     visionTag: 'Clear sight',
     visionDesc: 'Eye exams, lenses, and frames to keep routine vision care simple and affordable.',
-    visionItem1: '• Annual exam benefits',
-    visionItem2: '• Allowances for glasses or contacts',
-    visionItem3: '• Savings at participating retailers and providers',
+    visionItem1: 'Annual exam benefits',
+    visionItem2: 'Allowances for glasses or contacts',
+    visionItem3: 'Savings at participating retailers and providers',
     finalExpenseTitle: 'Final Expense Insurance',
     finalExpenseTag: 'Peace of mind',
     finalExpenseDesc: 'Whole-life style coverage that helps loved ones handle funeral and final costs without added financial stress.',
-    finalExpenseItem1: '• Simplified underwriting on many plans',
-    finalExpenseItem2: '• Fixed benefits paid to your beneficiaries',
-    finalExpenseItem3: '• No medical exam required on many policies',
+    finalExpenseItem1: 'Simplified underwriting on many plans',
+    finalExpenseItem2: 'Fixed benefits paid to your beneficiaries',
+    finalExpenseItem3: 'No medical exam required on many policies',
     footerBrand: 'Insurance Central Point',
     footerDesc: 'Have questions about coverage? Our team is here to help you choose a plan that fits.',
     footerCall: 'Call us',
@@ -128,100 +133,105 @@ const translations = {
     callUsNum: '1 (305) 402-9114',
     altPhoneLabel: 'Otra línea:',
     preferPhone: '¿Prefieres hablar por teléfono ahora mismo?',
+    carouselPause: 'Pausar desplazamiento',
+    carouselPlay: 'Reanudar desplazamiento',
+    heroPause: 'Pausar presentación',
+    heroPlay: 'Reanudar presentación',
     textSizeLabel: 'Tamaño de texto',
+    skipToContent: 'Saltar al contenido',
     navPartners: 'Socios',
     navServices: 'Servicios',
     navContact: 'Contacto',
-    navQuote: 'Solicita una cotizacion',
+    navQuote: 'Solicita una cotización',
     instagramCta: 'Instagram',
     partnersTitle: 'Nuestros socios',
     partnersPrev: 'Ver socios anteriores',
-    partnersNext: 'Ver mas socios',
+    partnersNext: 'Ver más socios',
     partnersRegion: 'Aseguradoras asociadas',
     partnerLogoAlt: 'Logo de aseguradora asociada',
     servicesPrev: 'Ver servicios anteriores',
-    servicesNext: 'Ver mas servicios',
+    servicesNext: 'Ver más servicios',
     servicesRegion: 'Servicios de seguros que ofrecemos',
-    heroTitle: 'Cobertura simple y confiable <br class="hidden sm:block" />para lo que mas importa.',
-    heroDesc: 'En Insurance Central Point, te ayudamos a proteger tu auto, hogar y familia con planes claros y asesoria honesta. Sin terminos confusos. Sin presion. Solo cobertura con la que puedes sentirte tranquilo.',
+    heroTitle: 'Cobertura simple y confiable <br class="hidden sm:block" />para lo que más importa.',
+    heroDesc: 'En Insurance Central Point, te ayudamos a proteger tu auto, hogar y familia con planes claros y asesoría honesta. Sin términos confusos. Sin presión. Solo cobertura con la que puedes sentirte tranquilo.',
     badgeLicensed: 'Agentes con licencia y certificados',
-    badgeYears: 'Sirviendo a familias por mas de 20 años',
-    badgeBilingual: 'Asesoria en ingles y español',
-    ctaQuote: 'Solicita una cotizacion',
-    ctaCall: 'O llamanos directamente al <span class="font-semibold">1 (305) 402‑9114</span>.',
-    whyTitle: 'Por que Insurance Central Point?',
-    why1: 'Polizas claras y faciles de entender, sin cargos ocultos.',
-    why2: 'Soporte rapido para reclamos con un equipo local dedicado.',
+    badgeYears: 'Sirviendo a familias por más de 20 años',
+    badgeBilingual: 'Asesoría en inglés y español',
+    ctaQuote: 'Solicita una cotización',
+    ctaCall: 'O llámanos directamente al <span class="font-semibold">1 (305) 402‑9114</span>.',
+    whyTitle: '¿Por qué Insurance Central Point?',
+    why1: 'Pólizas claras y fáciles de entender, sin cargos ocultos.',
+    why2: 'Soporte rápido para reclamos con un equipo local dedicado.',
     why3: 'Planes flexibles que se ajustan a tu presupuesto y estilo de vida.',
     quickStart: 'Comienza en menos de 60 segundos',
     nameLabel: 'Nombre completo',
     namePlaceholder: 'ej. Alex Johnson',
-    phoneLabel: 'Numero de telefono',
+    phoneLabel: 'Número de teléfono',
     phonePlaceholder: 'ej. 305-000-1234',
     coverageLabel: 'Tipo de cobertura',
-    optHealth: 'Seguro medico',
+    optHealth: 'Seguro médico',
     optHome: 'Seguro de hogar',
     optLife: 'Seguro de vida',
     optDental: 'Seguro dental',
-    optVision: 'Seguro de vision',
+    optVision: 'Seguro de visión',
     optFinalExpense: 'Seguro de gastos finales',
     requestCallback: 'Solicitar llamada',
-    callbackSending: 'Enviando...',
-    callbackSuccess: 'Gracias. Un agente con licencia te llamara pronto.',
-    callbackError: 'Algo salio mal. Por favor llamanos al 1 (305) 402-9114.',
+    callbackSending: 'Enviando…',
+    callbackSuccess: 'Gracias. Un agente con licencia te llamará pronto.',
+    callbackError: 'Algo salió mal. Por favor llámanos al 1 (305) 402-9114.',
     callbackNameRequired: 'Por favor ingresa tu nombre completo.',
-    callbackPhoneRequired: 'Por favor ingresa tu numero de telefono.',
-    callbackPhoneInvalid: 'Por favor ingresa un numero de telefono valido.',
-    callbackNotConfigured: 'La solicitud de llamada no esta configurada. Por favor llamanos directamente.',
-    callbackNote: 'Un agente con licencia te llamara para explicar tus opciones. Sin compromiso.',
+    callbackPhoneRequired: 'Por favor ingresa tu número de teléfono.',
+    callbackPhoneInvalid: 'Por favor ingresa un número de teléfono válido.',
+    callbackNotConfigured: 'La solicitud de llamada no está configurada. Por favor llámanos directamente.',
+    callbackNote: 'Un agente con licencia te llamará para explicar tus opciones. Sin compromiso.',
     servicesTitle: 'Nuestros Servicios',
     servicesDesc: 'Ofrecemos planes simples y directos para proteger tu vida diaria.',
     autoTitle: 'Seguro de Auto',
-    autoTag: 'Conduccion diaria',
-    autoDesc: 'Proteccion para tu auto, camioneta o SUV con opciones de cobertura que te ayudan a seguir en el camino y preparado para lo inesperado.',
-    autoItem1: '• Opciones de responsabilidad, colision y cobertura completa',
-    autoItem2: '• Descuentos para conductores seguros y familias con varios autos',
-    autoItem3: '• Soporte rapido para reclamos cuando mas lo necesitas',
+    autoTag: 'Conducción diaria',
+    autoDesc: 'Protección para tu auto, camioneta o SUV con opciones de cobertura que te ayudan a seguir en el camino y preparado para lo inesperado.',
+    autoItem1: 'Opciones de responsabilidad, colisión y cobertura completa',
+    autoItem2: 'Descuentos para conductores seguros y familias con varios autos',
+    autoItem3: 'Soporte rápido para reclamos cuando más lo necesitas',
     homeTitle: 'Seguro de Hogar',
     homeTag: 'Tu espacio',
-    homeDesc: 'Cobertura para tu casa, condominio o apartamento para que tengas tranquilidad de que tu espacio esta protegido de las sorpresas de la vida.',
-    homeItem1: '• Proteccion para tu hogar y pertenencias',
-    homeItem2: '• Opciones para inquilinos, propietarios y arrendadores',
-    homeItem3: '• Apoyo en casos de tormentas, incendios, robos y mas',
+    homeDesc: 'Cobertura para tu casa, condominio o apartamento para que tengas tranquilidad de que tu espacio está protegido de las sorpresas de la vida.',
+    homeItem1: 'Protección para tu hogar y pertenencias',
+    homeItem2: 'Opciones para inquilinos, propietarios y arrendadores',
+    homeItem3: 'Apoyo en casos de tormentas, incendios, robos y más',
     lifeTitle: 'Seguro de Vida',
     lifeTag: 'Tu familia',
-    lifeDesc: 'Planes que ayudan a cuidar a las personas que amas, para que planifiques el manana con tranquilidad hoy.',
-    lifeItem1: '• Opciones de vida a termino y vida entera',
-    lifeItem2: '• Proceso de solicitud simple y guiado',
-    lifeItem3: '• Montos de cobertura flexibles',
-    healthTitle: 'Seguro medico',
+    lifeDesc: 'Planes que ayudan a cuidar a las personas que amas, para que planifiques el mañana con tranquilidad hoy.',
+    lifeItem1: 'Opciones de vida a término y vida entera',
+    lifeItem2: 'Proceso de solicitud simple y guiado',
+    lifeItem3: 'Montos de cobertura flexibles',
+    healthTitle: 'Seguro médico',
     healthTag: 'Tu bienestar',
-    healthDesc: 'Planes medicos que ayudan a cubrir consultas, medicamentos y hospitalizacion para que te concentres en tu salud.',
-    healthItem1: '• Cuidado preventivo y beneficios esenciales de salud',
-    healthItem2: '• Flexibilidad dentro y fuera de la red',
-    healthItem3: '• Asesoria para elegir un plan acorde a tu presupuesto',
+    healthDesc: 'Planes médicos que ayudan a cubrir consultas, medicamentos y hospitalización para que te concentres en tu salud.',
+    healthItem1: 'Cuidado preventivo y beneficios esenciales de salud',
+    healthItem2: 'Flexibilidad dentro y fuera de la red',
+    healthItem3: 'Asesoría para elegir un plan acorde a tu presupuesto',
     dentalTitle: 'Seguro dental',
     dentalTag: 'Tu sonrisa',
-    dentalDesc: 'Cobertura para limpiezas, empastes y tratamientos mayores con beneficios claros y faciles de entender.',
-    dentalItem1: '• Examenes de rutina, radiografias y cuidado preventivo',
-    dentalItem2: '• Opciones de ortodoncia en planes seleccionados',
-    dentalItem3: '• Acceso a amplias redes de dentistas',
-    visionTitle: 'Seguro de vision',
-    visionTag: 'Vision clara',
-    visionDesc: 'Examenes de la vista, lentes y monturas para que el cuidado visual rutinario sea simple y accesible.',
-    visionItem1: '• Beneficios para examen anual',
-    visionItem2: '• Montos para lentes de contacto o anteojos',
-    visionItem3: '• Ahorros en comercios y proveedores participantes',
+    dentalDesc: 'Cobertura para limpiezas, empastes y tratamientos mayores con beneficios claros y fáciles de entender.',
+    dentalItem1: 'Exámenes de rutina, radiografías y cuidado preventivo',
+    dentalItem2: 'Opciones de ortodoncia en planes seleccionados',
+    dentalItem3: 'Acceso a amplias redes de dentistas',
+    visionTitle: 'Seguro de visión',
+    visionTag: 'Visión clara',
+    visionDesc: 'Exámenes de la vista, lentes y monturas para que el cuidado visual rutinario sea simple y accesible.',
+    visionItem1: 'Beneficios para examen anual',
+    visionItem2: 'Montos para lentes de contacto o anteojos',
+    visionItem3: 'Ahorros en comercios y proveedores participantes',
     finalExpenseTitle: 'Seguro de gastos finales',
     finalExpenseTag: 'Tranquilidad',
-    finalExpenseDesc: 'Cobertura tipo vida entera que ayuda a los seres queridos con gastos funerarios y finales sin estres economico.',
-    finalExpenseItem1: '• Suscripcion simplificada en muchos planes',
-    finalExpenseItem2: '• Beneficios fijos pagados a tus beneficiarios',
-    finalExpenseItem3: '• Sin examen medico en muchas polizas',
+    finalExpenseDesc: 'Cobertura tipo vida entera que ayuda a los seres queridos con gastos funerarios y finales sin estrés económico.',
+    finalExpenseItem1: 'Suscripción simplificada en muchos planes',
+    finalExpenseItem2: 'Beneficios fijos pagados a tus beneficiarios',
+    finalExpenseItem3: 'Sin examen médico en muchas pólizas',
     footerBrand: 'Insurance Central Point',
-    footerDesc: 'Tienes preguntas sobre cobertura? Nuestro equipo esta aqui para ayudarte a elegir un plan que se ajuste a ti.',
-    footerCall: 'Llamanos',
-    footerInstagram: 'Siguenos en Instagram',
+    footerDesc: '¿Tienes preguntas sobre cobertura? Nuestro equipo está aquí para ayudarte a elegir un plan que se ajuste a ti.',
+    footerCall: 'Llámanos',
+    footerInstagram: 'Síguenos en Instagram',
     footerOffice: 'Oficina',
     copyright: '© <span id="year"></span> Insurance Central Point. Todos los derechos reservados.',
     whatsappButton: 'Habla con nosotros',
@@ -273,9 +283,15 @@ function setLanguage(lang) {
     const isActive = button.dataset.lang === lang;
     button.classList.toggle('ring-2', isActive);
     button.classList.toggle('ring-white', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
   });
 
   safeStore.set('localStorage', 'preferredLanguage', lang);
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState(null, '', url);
+  } catch (e) { /* ignore */ }
   if (typeof updateWhatsAppLink === 'function') {
     updateWhatsAppLink();
   }
@@ -287,7 +303,8 @@ document.querySelectorAll('.lang-toggle').forEach((button) => {
   });
 });
 
-setLanguage(safeStore.get('localStorage', 'preferredLanguage') || 'en');
+const urlLang = new URLSearchParams(window.location.search).get('lang');
+setLanguage(urlLang || safeStore.get('localStorage', 'preferredLanguage') || 'en');
 
 window.partnerLogoFallback = function (img) {
   if (!img || img.dataset.partnerFallbackApplied === 'true') return;
@@ -329,6 +346,7 @@ function initHorizontalCarousel(config) {
   if (!scroller || !prev || !next) return;
 
   let autoplayId = null;
+  let paused = false;
   let dragActive = false;
   let dragStartX = 0;
   let dragScrollLeft = 0;
@@ -397,7 +415,7 @@ function initHorizontalCarousel(config) {
 
   function startAutoplay() {
     stopAutoplay();
-    if (!canScroll()) return;
+    if (paused || !canScroll()) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     autoplayId = window.setInterval(goNext, config.autoplayMs);
   }
@@ -415,7 +433,7 @@ function initHorizontalCarousel(config) {
   }
 
   function shouldAutoplay() {
-    return canScroll() && !document.hidden && (!section || !section.matches(':hover'));
+    return !paused && canScroll() && !document.hidden && (!section || !section.matches(':hover'));
   }
 
   function refreshAutoplay() {
@@ -485,6 +503,23 @@ function initHorizontalCarousel(config) {
   if (section) {
     section.addEventListener('mouseenter', stopAutoplay);
     section.addEventListener('mouseleave', startAutoplay);
+    section.addEventListener('focusin', stopAutoplay);
+    section.addEventListener('focusout', startAutoplay);
+  }
+
+  const pauseBtn = config.pauseSelector ? document.querySelector(config.pauseSelector) : null;
+  if (pauseBtn) {
+    const label = pauseBtn.querySelector('[data-pause-label]');
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      pauseBtn.setAttribute('aria-pressed', String(paused));
+      const key = paused ? 'carouselPlay' : 'carouselPause';
+      if (label) {
+        label.dataset.i18n = key;
+        label.textContent = getTranslation(key);
+      }
+      if (paused) stopAutoplay(); else startAutoplay();
+    });
   }
 
   document.addEventListener('visibilitychange', refreshAutoplay);
@@ -512,6 +547,7 @@ initHorizontalCarousel({
   slideSelector: '.partner-logo',
   prevSelector: '[data-partner-prev]',
   nextSelector: '[data-partner-next]',
+  pauseSelector: '[data-partner-pause]',
   sectionId: 'partners',
   autoplayMs: 4500
 });
@@ -521,6 +557,7 @@ initHorizontalCarousel({
   slideSelector: '.service-card',
   prevSelector: '[data-service-prev]',
   nextSelector: '[data-service-next]',
+  pauseSelector: '[data-service-pause]',
   sectionId: 'services',
   autoplayMs: 5000
 });
@@ -535,6 +572,22 @@ function getTranslation(key) {
   const statusEl = document.getElementById('callback-status');
   const submitBtn = document.getElementById('callback-submit');
   if (!form || !submitBtn) return;
+
+  function markInvalid(input, message) {
+    form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+    form.querySelectorAll('[data-field-error]').forEach((el) => {
+      el.textContent = '';
+      el.hidden = true;
+    });
+    if (!input) return;
+    input.setAttribute('aria-invalid', 'true');
+    const errorEl = document.getElementById(input.id + '-error');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    }
+    input.focus();
+  }
 
   function showStatus(message, type) {
     if (!statusEl) return;
@@ -572,17 +625,18 @@ function getTranslation(key) {
     const coverageSelect = document.getElementById('coverage');
     const coverageLabel = coverageSelect.options[coverageSelect.selectedIndex].textContent.trim();
 
+    markInvalid(null);
     if (!fullName) {
-      showStatus(getTranslation('callbackNameRequired'), 'error');
+      markInvalid(document.getElementById('fullname'), getTranslation('callbackNameRequired'));
       return;
     }
     if (!phone) {
-      showStatus(getTranslation('callbackPhoneRequired'), 'error');
+      markInvalid(document.getElementById('phonenumber'), getTranslation('callbackPhoneRequired'));
       return;
     }
 
-    if (phone.replace(/D/g, '').length < 7) {
-      showStatus(getTranslation('callbackPhoneInvalid'), 'error');
+    if (phone.replace(/\D/g, '').length < 7) {
+      markInvalid(document.getElementById('phonenumber'), getTranslation('callbackPhoneInvalid'));
       return;
     }
 
@@ -654,39 +708,18 @@ function updateWhatsAppLink() {
   link.href = `https://wa.me/${phone}?text=${encodeURIComponent(defaultText)}`;
 }
 
-async function checkCountryIsUS() {
+// Decide from the browser's time zone (no network call) whether the visitor is in the US.
+const US_TIME_ZONE = /^(America\/(New_York|Detroit|Chicago|Menominee|Denver|Boise|Phoenix|Los_Angeles|Anchorage|Juneau|Sitka|Metlakatla|Yakutat|Nome|Adak|Indiana\/.+|Kentucky\/.+|North_Dakota\/.+)|Pacific\/Honolulu|US\/.+|EST5EDT|CST6CDT|MST7MDT|PST8PDT)$/;
+
+function checkCountryIsUS() {
   const config = window.WHATSAPP_CONFIG || {};
   if (config.usOnly === false) return true;
 
-  const cached = safeStore.get('sessionStorage', 'user_country_code');
-  if (cached) return cached.toUpperCase() === 'US';
-
   try {
-    const res = await fetch('https://api.country.is', { cache: 'force-cache' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.country) {
-        const code = data.country.toUpperCase();
-        safeStore.set('sessionStorage', 'user_country_code', code);
-        return code === 'US';
-      }
-    }
+    return US_TIME_ZONE.test(Intl.DateTimeFormat().resolvedOptions().timeZone || '');
   } catch (e) {
-    try {
-      const res2 = await fetch('https://ipapi.co/json/');
-      if (res2.ok) {
-        const data2 = await res2.json();
-        if (data2 && data2.country_code) {
-          const code2 = data2.country_code.toUpperCase();
-          safeStore.set('sessionStorage', 'user_country_code', code2);
-          return code2 === 'US';
-        }
-      }
-    } catch (e2) {
-      console.warn('Geolocation lookup unavailable:', e2);
-    }
+    return false;
   }
-  return false;
 }
 
 (function initWhatsAppOverlay() {
@@ -707,7 +740,7 @@ async function checkCountryIsUS() {
   async function evaluateAndDisplay() {
     if (!isMobileDevice()) return;
 
-    const isUS = await checkCountryIsUS();
+    const isUS = checkCountryIsUS();
     if (isUS) {
       overlay.classList.remove('hidden');
       updateWhatsAppLink();
@@ -726,13 +759,13 @@ async function checkCountryIsUS() {
   function setSize(mode) {
     if (mode === 'large') {
       root.classList.add('text-lg-mode');
-      btnLarge.className = 'h-8 min-w-[2rem] px-2 rounded-full text-sm font-extrabold bg-white text-navy shadow transition focus:outline-none focus:ring-2 focus:ring-emerald-400';
-      btnNormal.className = 'h-8 min-w-[2rem] px-2 rounded-full text-xs font-extrabold text-white hover:bg-white/20 transition focus:outline-none focus:ring-2 focus:ring-emerald-400';
+      btnLarge.className = 'h-8 min-w-[2rem] px-2 rounded-full text-sm font-extrabold bg-white text-navy shadow transition focus-visible:outline-none focus-visible:ring-2 focus:ring-emerald-400';
+      btnNormal.className = 'h-8 min-w-[2rem] px-2 rounded-full text-xs font-extrabold text-white hover:bg-white/20 transition focus-visible:outline-none focus-visible:ring-2 focus:ring-emerald-400';
       safeStore.set('localStorage', 'preferredTextSize', 'large');
     } else {
       root.classList.remove('text-lg-mode');
-      btnNormal.className = 'h-8 min-w-[2rem] px-2 rounded-full text-xs font-extrabold bg-white text-navy shadow transition focus:outline-none focus:ring-2 focus:ring-emerald-400';
-      btnLarge.className = 'h-8 min-w-[2rem] px-2 rounded-full text-sm font-extrabold text-white hover:bg-white/20 transition focus:outline-none focus:ring-2 focus:ring-emerald-400';
+      btnNormal.className = 'h-8 min-w-[2rem] px-2 rounded-full text-xs font-extrabold bg-white text-navy shadow transition focus-visible:outline-none focus-visible:ring-2 focus:ring-emerald-400';
+      btnLarge.className = 'h-8 min-w-[2rem] px-2 rounded-full text-sm font-extrabold text-white hover:bg-white/20 transition focus-visible:outline-none focus-visible:ring-2 focus:ring-emerald-400';
       safeStore.set('localStorage', 'preferredTextSize', 'normal');
     }
   }
@@ -767,6 +800,7 @@ async function checkCountryIsUS() {
     });
 
     dots.forEach((dot, i) => {
+      dot.setAttribute('aria-current', String(i === currentIndex));
       if (i === currentIndex) {
         dot.classList.remove('w-2.5', 'bg-white/40');
         dot.classList.add('w-8', 'bg-white');
@@ -777,9 +811,11 @@ async function checkCountryIsUS() {
     });
   }
 
+  let paused = false;
+
   function startAutoplay() {
     stopAutoplay();
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     autoplayTimer = setInterval(() => {
       goToHeroSlide(currentIndex + 1);
     }, intervalMs);
@@ -803,6 +839,21 @@ async function checkCountryIsUS() {
   if (heroSection) {
     heroSection.addEventListener('mouseenter', stopAutoplay);
     heroSection.addEventListener('mouseleave', startAutoplay);
+    heroSection.addEventListener('focusin', stopAutoplay);
+    heroSection.addEventListener('focusout', startAutoplay);
+  }
+
+  const pauseBtn = document.getElementById('hero-pause');
+  const pauseIcon = document.getElementById('hero-pause-icon');
+  if (pauseBtn) {
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      pauseBtn.setAttribute('aria-pressed', String(paused));
+      pauseBtn.setAttribute('data-i18n-aria', paused ? 'heroPlay' : 'heroPause');
+      pauseBtn.setAttribute('aria-label', getTranslation(paused ? 'heroPlay' : 'heroPause'));
+      pauseIcon.setAttribute('d', paused ? 'M8 5v14l11-7z' : 'M6 5h4v14H6zM14 5h4v14h-4z');
+      if (paused) stopAutoplay(); else startAutoplay();
+    });
   }
 
   startAutoplay();

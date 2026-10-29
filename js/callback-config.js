@@ -7,6 +7,6 @@
  * Each inbox must be activated once via FormSubmit (confirmation email on first use).
  */
 window.CALLBACK_CONFIG = {
-  primaryRecipient: 'insurancecentralpointllc@gmail.com',
+  primaryRecipient: 'gabriela@insurancecentralpoint.com',
   ccRecipient: 'greily@insurancecentralpoint.com'
 };
